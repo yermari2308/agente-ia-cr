@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agente IA para WhatsApp — Automatización para tu negocio en Costa Rica</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#0d0d0d;color:#f0f0f0;line-height:1.6}
+.container{max-width:960px;margin:0 auto;padding:0 1.5rem}
+
+nav{padding:1.25rem 0;border-bottom:1px solid #1f1f1f}
+.nav-inner{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.25rem;font-weight:700;color:#fff}
+.logo span{color:#25D366}
+.nav-cta{background:#25D366;color:#000;padding:8px 18px;border-radius:8px;font-size:0.875rem;font-weight:600;border:none;cursor:pointer;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+.hero{text-align:center;padding:5rem 1rem 4rem}
+.badge{display:inline-flex;align-items:center;gap:6px;background:#0e2d1a;color:#25D366;font-size:12px;font-weight:500;padding:5px 14px;border-radius:99px;margin-bottom:1.5rem;border:1px solid #1a4d2a}
+.hero h1{font-size:clamp(2rem,5vw,3.25rem);font-weight:700;line-height:1.1;margin-bottom:1.25rem;color:#fff}
+.hero h1 span{color:#25D366}
+.hero p{font-size:1.0625rem;color:#777;max-width:540px;margin:0 auto 2.5rem;line-height:1.7}
+.btn-wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#000;padding:14px 28px;border-radius:10px;font-size:1rem;font-weight:700;border:none;cursor:pointer;transition:opacity .2s;text-decoration:none}
+.btn-wa:hover{opacity:.9}
+.hero-sub{margin-top:1rem;font-size:13px;color:#444}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1a1a1a;border:1px solid #1a1a1a;border-radius:12px;overflow:hidden;margin:0 0 3rem}
+.stat{background:#111;padding:1.5rem;text-align:center}
+.stat-num{font-size:1.875rem;font-weight:700;color:#25D366}
+.stat-label{font-size:12px;color:#555;margin-top:4px}
+
+.section-label{font-size:11px;letter-spacing:.1em;color:#444;text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-size:1.5rem;font-weight:600;color:#fff;margin-bottom:0.5rem}
+.section-sub{font-size:0.9375rem;color:#666;margin-bottom:2rem;max-width:560px}
+
+.how-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:#1a1a1a;border:1px solid #1a1a1a;border-radius:14px;overflow:hidden;margin-bottom:3rem}
+.step{background:#111;padding:1.5rem;position:relative}
+.step-num{font-size:2rem;font-weight:700;color:#1a3d24;margin-bottom:0.75rem}
+.step h3{font-size:14px;font-weight:600;color:#fff;margin-bottom:0.25rem}
+.step p{font-size:12px;color:#555;line-height:1.6}
+
+.examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:3rem}
+.example-card{background:#111;border:1px solid #1a1a1a;border-radius:14px;padding:1.5rem;transition:border-color .2s}
+.example-card:hover{border-color:#25D366}
+.agent-avatar{width:44px;height:44px;border-radius:50%;background:#0e2d1a;border:2px solid #25D366;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:1rem}
+.agent-name{font-size:15px;font-weight:600;color:#25D366;margin-bottom:2px}
+.agent-biz{font-size:12px;color:#555;margin-bottom:0.75rem}
+.agent-desc{font-size:13px;color:#666;line-height:1.6}
+.demo-badge{display:inline-block;margin-top:0.75rem;background:#0e2d1a;color:#25D366;font-size:11px;padding:2px 10px;border-radius:99px;border:1px solid #1a4d2a}
+
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:3rem}
+.feature-card{background:#111;border:1px solid #1a1a1a;border-radius:14px;padding:1.5rem;transition:border-color .2s}
+.feature-card:hover{border-color:#333}
+.feature-icon{width:40px;height:40px;background:#0e2d1a;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.feature-icon svg{width:20px;height:20px;stroke:#25D366;fill:none;stroke-width:1.75}
+.feature-card h3{font-size:14px;font-weight:600;margin-bottom:5px;color:#fff}
+.feature-card p{font-size:12px;color:#555;line-height:1.6}
+
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-bottom:3rem}
+.price-card{background:#111;border:1px solid #1f1f1f;border-radius:16px;padding:2rem;position:relative}
+.price-card.popular{border-color:#25D366;border-width:2px}
+.popular-badge{position:absolute;top:-13px;left:20px;background:#25D366;color:#000;font-size:11px;font-weight:700;padding:3px 12px;border-radius:99px}
+.price-tier{font-size:13px;color:#555;margin-bottom:4px}
+.price-amount{font-size:2rem;font-weight:700;color:#fff;margin-bottom:2px}
+.price-recur{font-size:12px;color:#444;margin-bottom:1.5rem}
+.price-divider{border:none;border-top:1px solid #1a1a1a;margin-bottom:1.25rem}
+.price-features{display:flex;flex-direction:column;gap:8px}
+.price-feature{display:flex;align-items:center;gap:8px;font-size:13px;color:#666}
+.check{width:15px;height:15px;stroke:#25D366;fill:none;stroke-width:2.5;flex-shrink:0}
+
+.cta-final{background:#0e2d1a;border:1px solid #1a4d2a;border-radius:20px;padding:3.5rem 2rem;text-align:center;margin-bottom:4rem}
+.cta-final h2{font-size:1.75rem;font-weight:700;margin-bottom:0.75rem;color:#fff}
+.cta-final p{color:#4a8a60;margin-bottom:2rem;font-size:1rem}
+.cta-note{font-size:12px;color:#2d5c3e;margin-top:1rem}
+
+footer{border-top:1px solid #1a1a1a;padding:2rem 0;text-align:center;color:#2a2a2a;font-size:13px}
+
+@media(max-width:600px){
+  .hero h1{font-size:1.875rem}
+  .stats{grid-template-columns:1fr 1fr 1fr}
+  .stat-num{font-size:1.5rem}
+  .how-steps{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="container">
+<div class="nav-inner">
+<div class="logo">Agente<span>IA</span>.cr</div>
+<a class="btn-wa" href="https://wa.me/50600000000?text=Hola%2C%20quiero%20saber%20c%C3%B3mo%20funciona%20el%20agente%20IA%20para%20mi%20negocio" target="_blank" style="padding:8px 18px;font-size:.875rem;border-radius:8px">Demo gratis</a>
+</div>
+</div>
+</nav>
+
+<main>
+<div class="container">
+
+<div class="hero">
+<div class="badge">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+Automatización con IA para negocios en Costa Rica
+</div>
+<h1>Tu negocio merece<br>su propio <span>agente de IA</span></h1>
+<p>Creamos una asistente virtual personalizada para el WhatsApp de tu negocio — con su nombre, su tono y las funciones exactas que necesitás. Atiende clientes las 24 horas mientras vos descansás.</p>
+<a class="btn-wa" href="https://wa.me/50600000000?text=Hola%2C%20quiero%20saber%20c%C3%B3mo%20funciona%20el%20agente%20IA%20para%20mi%20negocio" target="_blank">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+Quiero una demo gratis
+</a>
+<p class="hero-sub">Demo de 10 minutos · Sin compromiso · Sin contratos largos</p>
+</div>
+
+<div class="stats">
+<div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Sin horarios ni feriados</div></div>
+<div class="stat"><div class="stat-num">&lt;10s</div><div class="stat-label">Tiempo de respuesta</div></div>
+<div class="stat"><div class="stat-num">7 días</div><div class="stat-label">Para tener tu agente listo</div></div>
+</div>
+
+<div style="margin-bottom:3rem">
+<div class="section-label">Cómo funciona</div>
+<div class="section-title">Cuatro pasos y tu agente está listo</div>
+<div class="section-sub">No necesitás saber de tecnología. Nosotros nos encargamos de todo.</div>
+<div class="how-steps">
+<div class="step"><div class="step-num">01</div><h3>Nos contás sobre tu negocio</h3><p>Tipo de negocio, servicios, precios, horarios y el tono que querés usar con tus clientes.</p></div>
+<div class="step"><div class="step-num">02</div><h3>Creamos tu agente único</h3><p>Diseñamos un asistente con nombre, personalidad y respuestas personalizadas para vos.</p></div>
+<div class="step"><div class="step-num">03</div><h3>Lo integramos en tu WhatsApp</h3><p>Sin instalar nada complicado. Solo conectamos tu número y listo.</p></div>
+<div class="step"><div class="step-num">04</div><h3>Tu agente empieza a trabajar</h3><p>Atiende consultas, agenda citas y cierra ventas automáticamente, todo el día.</p></div>
+</div>
+</div>
+
+<div style="margin-bottom:3rem">
+<div class="section-label">Ejemplos reales</div>
+<div class="section-title">Cada negocio tiene su propio agente</div>
+<div class="section-sub">No es un chatbot genérico. Es un asistente creado específicamente para tu marca.</div>
+<div class="examples">
+<div class="example-card">
+<div class="agent-avatar">🏨</div>
+<div class="agent-name">Luna</div>
+<div class="agent-biz">Agente para Hotel Boutique</div>
+<div class="agent-desc">Atiende consultas de tarifas, disponibilidad y servicios en español e inglés. Dirige directo a reservas.</div>
+</div>
+<div class="example-card">
+<div class="agent-avatar">🍽️</div>
+<div class="agent-name">Sabor</div>
+<div class="agent-biz">Agente para Restaurante</div>
+<div class="agent-desc">Informa el menú del día, toma reservaciones de mesa y confirma disponibilidad en tiempo real.</div>
+</div>
+<div class="example-card">
+<div class="agent-avatar">✂️</div>
+<div class="agent-name">Blade</div>
+<div class="agent-biz">Agente para Barbería</div>
+<div class="agent-desc">Agenda citas, confirma disponibilidad de estilistas y manda recordatorios automáticos.</div>
+</div>
+<div class="example-card">
+<div class="agent-avatar">🌺</div>
+<div class="agent-name">Fiorela</div>
+<div class="agent-biz">Agente para Clínica Estética</div>
+<div class="agent-desc">Informa tratamientos y precios, agenda consultas y hace seguimiento de pacientes automáticamente.</div>
+<div class="demo-badge">Demo disponible</div>
+</div>
+</div>
+</div>
+
+<div style="margin-bottom:3rem">
+<div class="section-label">Qué incluye cada agente</div>
+<div class="features">
+<div class="feature-card">
+<div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+<h3>Disponible 24/7</h3>
+<p>Feriados, madrugadas y fines de semana incluidos. Tu negocio nunca cierra.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><polyline points="9 12 11 14 15 10"/></svg></div>
+<h3>Agenda automática</h3>
+<p>Crea reservas, confirma citas y manda recordatorios sin intervención humana.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+<h3>Español e inglés</h3>
+<p>Detecta el idioma del cliente y responde igual. Ideal para turistas.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><polyline points="16 21 12 17 8 21"/><polyline points="8 3 12 7 16 3"/></svg></div>
+<h3>100% personalizado</h3>
+<p>Nombre, personalidad y respuestas adaptadas exactamente a tu negocio y tu marca.</p>
+</div>
+</div>
+</div>
+
+<div style="margin-bottom:3rem">
+<div class="section-label">Planes</div>
+<div class="pricing">
+<div class="price-card">
+<div class="price-tier">Básico</div>
+<div class="price-amount">₡50,000</div>
+<div class="price-recur">instalación + ₡15,000/mes</div>
+<hr class="price-divider">
+<div class="price-features">
+<span class="price-feature"><svg class="check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Barberías y salones</span>
+<span class="price-feature"><svg class="check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Consultorios pequeños</span>
+<span class="price-feature"><svg class="check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Negocios locales</span>
+<span class="price-feature"><svg class="check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Agente con nombre propio</span>
+<span class="price-feature"><svg class="check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Soporte incluido</span>
+</div>
+</div>
+<div class="price-card popular">
+<div class="popular-badge">Más popular</div>
+<div class="price-tier">Profesional</div>
+<div class="price-amount">₡100,000</div>
+<div class="price-recur">instalación + ₡25,000/mes</div>
+<hr class="price-divider">
+<div class="price-features">
+<span class="price-feature"><svg class="check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Hoteles y hospedajes</span>
+<span class="price-feature"><svg class="check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Restaurantes</span>
+<span class="price-feature"><svg class="check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Clínicas, spas y gimnasios</span>
+<span class="price-feature"><svg class="check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Agente bilingüe (ES/EN)</span>
+<span class="price-feature"><svg class="check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Conversaciones ilimitadas</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="cta-final">
+<h2>¿Listo para tener tu propio agente?</h2>
+<p>Hablamos 10 minutos, te mostramos cómo quedaría para tu negocio específico y vos decidís.</p>
+<a class="btn-wa" href="https://wa.me/50600000000?text=Hola%2C%20quiero%20ver%20c%C3%B3mo%20quedar%C3%ADa%20un%20agente%20IA%20para%20mi%20negocio" target="_blank">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+Escribinos ahora
+</a>
+<p class="cta-note">Respondemos en minutos · Costa Rica</p>
+</div>
+
+</div>
+</main>
+
+<footer>
+<div class="container">
+<p>Agentes de IA para negocios en Costa Rica &mdash; Automatización inteligente para WhatsApp</p>
+</div>
+</footer>
+
+</body>
+</html>
